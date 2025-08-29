@@ -1,0 +1,33 @@
+# terminal
+jupyter-notebook
+
+# In separate terminal
+# Connect to psql
+sudo -u postgres psql
+
+CREATE DATABASE demographics;
+
+\c demographics
+
+DROP TABLE employee_data IF EXISTS;
+
+CREATE TABLE employee_data (
+    employee_id VARCHAR(100),
+    employee_name VARCHAR(100),
+    job_title VARCHAR(100),
+    career_level VARCHAR(50),
+    gender VARCHAR(100),
+    age INTEGER,
+    race_ethnicity VARCHAR(100),
+    compensation NUMERIC(10,2),
+    compensation_range VARCHAR(50),
+    hire_date DATE,
+    work_location VARCHAR(50),
+    role_type VARCHAR(50),
+    veteran_status VARCHAR(3),
+    disability_status VARCHAR(3)
+);
+
+\copy employee_data FROM 'LBD_SampleDataset.csv' WITH CSV HEADER
+
+
